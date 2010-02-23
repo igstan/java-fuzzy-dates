@@ -1,0 +1,6 @@
+build
+nbproject
+manifest.mf
+lib/CopyLibs
+build.xml
+lib/nblibraries.properties
