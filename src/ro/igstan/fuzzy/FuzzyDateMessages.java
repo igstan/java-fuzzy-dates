@@ -8,30 +8,30 @@ public interface FuzzyDateMessages {
 
     public String oneSecondAgo();
 
-    public String someSecondsAgo(long diff);
+    public String someSecondsAgo(int diff);
 
     public String oneMinuteAgo();
 
-    public String someMinutesAgo(long diff);
+    public String someMinutesAgo(int diff);
 
     public String oneHourAgo();
 
-    public String someHoursAgo(long numberOfHours);
+    public String someHoursAgo(int numberOfHours);
 
     public String oneDayAgo();
 
-    public String someDaysAgo(long numberOfDays);
+    public String someDaysAgo(int numberOfDays);
 
     public String oneWeekAgo();
 
-    public String someWeeksAgo(long numberOfWeeks);
+    public String someWeeksAgo(int numberOfWeeks);
 
     public String oneMonthAgo();
 
-    public String someMonthsAgo(long numberOfMonths);
+    public String someMonthsAgo(int numberOfMonths);
 
     public String oneYearAgo();
 
-    public String someYearsAgo(long numberOfYears);
+    public String someYearsAgo(int numberOfYears);
 
 }

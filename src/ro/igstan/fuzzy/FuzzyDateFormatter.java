@@ -27,9 +27,9 @@ public class FuzzyDateFormatter {
     }
 
     public String timeAgo(Calendar before) {
-        long beforeSeconds = before.getTimeInMillis() / 1000;
-        long nowSeconds = currentTime.getTimeInMillis() / 1000;
-        long timeDifference = nowSeconds - beforeSeconds;
+        int beforeSeconds = (int) (before.getTimeInMillis() / 1000);
+        int nowSeconds = (int) (currentTime.getTimeInMillis() / 1000);
+        int timeDifference = nowSeconds - beforeSeconds;
 
         if (timeDifference < ONE_MINUTE) {
             return timeAgoSeconds(timeDifference);
@@ -48,7 +48,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoSeconds(long numberOfSeconds) {
+    private String timeAgoSeconds(int numberOfSeconds) {
         if (numberOfSeconds == 1) {
             return fuzzyMessages.oneSecondAgo();
         } else {
@@ -56,7 +56,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoMinutes(long numberOfMinutes) {
+    private String timeAgoMinutes(int numberOfMinutes) {
         if (numberOfMinutes == 1) {
             return fuzzyMessages.oneMinuteAgo();
         } else {
@@ -64,7 +64,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoHours(long numberOfHours) {
+    private String timeAgoHours(int numberOfHours) {
         if (numberOfHours == 1) {
             return fuzzyMessages.oneHourAgo();
         } else {
@@ -72,7 +72,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoDays(long numberOfDays) {
+    private String timeAgoDays(int numberOfDays) {
         if (numberOfDays == 1) {
             return fuzzyMessages.oneDayAgo();
         } else {
@@ -80,7 +80,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoWeeks(long numberOfWeeks) {
+    private String timeAgoWeeks(int numberOfWeeks) {
         if (numberOfWeeks == 1) {
             return fuzzyMessages.oneWeekAgo();
         } else {
@@ -88,7 +88,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoMonths(long numberOfMonths) {
+    private String timeAgoMonths(int numberOfMonths) {
         if (numberOfMonths == 1) {
             return fuzzyMessages.oneMonthAgo();
         } else {
@@ -96,7 +96,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoYears(long numberOfYears) {
+    private String timeAgoYears(int numberOfYears) {
         if (numberOfYears == 1) {
             return fuzzyMessages.oneYearAgo();
         } else {

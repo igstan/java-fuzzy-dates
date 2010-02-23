@@ -10,7 +10,7 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
         return "acum 1 secundă";
     }
 
-    public String someSecondsAgo(long numberOfSeconds) {
+    public String someSecondsAgo(int numberOfSeconds) {
         return "acum " + numberOfSeconds + " secunde";
     }
 
@@ -18,7 +18,7 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
         return "acum 1 minut";
     }
 
-    public String someMinutesAgo(long numberOfMinutes) {
+    public String someMinutesAgo(int numberOfMinutes) {
         return "acum " + numberOfMinutes + " minute";
     }
 
@@ -26,7 +26,7 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
         return "acum 1 oră";
     }
 
-    public String someHoursAgo(long numberOfHours) {
+    public String someHoursAgo(int numberOfHours) {
         return "acum " + numberOfHours + " ore";
     }
 
@@ -34,7 +34,7 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
         return "acum 1 zi";
     }
 
-    public String someDaysAgo(long numberOfDays) {
+    public String someDaysAgo(int numberOfDays) {
         return "acum " + numberOfDays + " zile";
     }
 
@@ -42,7 +42,7 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
         return "acum 1 săptămână";
     }
 
-    public String someWeeksAgo(long numberOfWeeks) {
+    public String someWeeksAgo(int numberOfWeeks) {
         return "acum " + numberOfWeeks + " săptămâni";
     }
 
@@ -50,7 +50,7 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
         return "acum 1 lună";
     }
 
-    public String someMonthsAgo(long numberOfMonths) {
+    public String someMonthsAgo(int numberOfMonths) {
         return "acum 2 luni";
     }
 
@@ -58,7 +58,7 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
         return "acum 1 an";
     }
 
-    public String someYearsAgo(long numberOfYears) {
+    public String someYearsAgo(int numberOfYears) {
         return "acum 2 ani";
     }
 }
