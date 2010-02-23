@@ -59,6 +59,6 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
     }
 
     public String someYearsAgo(int numberOfYears) {
-        return "acum 2 ani";
+        return "acum " + numberOfYears + " ani";
     }
 }
