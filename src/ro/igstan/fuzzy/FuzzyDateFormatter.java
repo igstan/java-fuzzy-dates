@@ -8,6 +8,11 @@ import java.util.Calendar;
 
 public class FuzzyDateFormatter {
 
+    private static final int SECONDS    = 1;
+    private static final int ONE_MINUTE = 60 * SECONDS;
+    private static final int ONE_HOUR   = 60 * ONE_MINUTE;
+    private static final int ONE_DAY    = 24 * ONE_HOUR;
+
     private final Calendar currentTime;
 
     private final FuzzyDateMessages fuzzyMessages;
@@ -21,16 +26,16 @@ public class FuzzyDateFormatter {
     public String timeAgo(Calendar before) {
         long beforeSeconds = before.getTimeInMillis() / 1000;
         long nowSeconds = currentTime.getTimeInMillis() / 1000;
-        long numberOfSeconds = nowSeconds - beforeSeconds;
+        long timeDifference = nowSeconds - beforeSeconds;
 
-        if (numberOfSeconds < 60) {
-            return timeAgoSeconds(numberOfSeconds);
-        } else if (numberOfSeconds < 3600) {
-            return timeAgoMinutes(numberOfSeconds);
-        } else if (numberOfSeconds < 3600 * 24) {
-            return timeAgoHours(numberOfSeconds);
+        if (timeDifference < ONE_MINUTE) {
+            return timeAgoSeconds(timeDifference);
+        } else if (timeDifference < ONE_HOUR) {
+            return timeAgoMinutes(timeDifference);
+        } else if (timeDifference < ONE_DAY) {
+            return timeAgoHours(timeDifference);
         } else {
-            return timeAgoDays(numberOfSeconds);
+            return timeAgoDays(timeDifference);
         }
     }
 
