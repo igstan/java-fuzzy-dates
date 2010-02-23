@@ -14,6 +14,7 @@ public class FuzzyDateFormatter {
     private static final int ONE_DAY    = 24 * ONE_HOUR;
     private static final int ONE_WEEK   =  7 * ONE_DAY;
     private static final int ONE_MONTH  =  4 * ONE_WEEK;
+    private static final int ONE_YEAR   = 12 * ONE_MONTH;
 
     private final Calendar currentTime;
 
@@ -40,8 +41,10 @@ public class FuzzyDateFormatter {
             return timeAgoDays(timeDifference / ONE_DAY);
         } else if (timeDifference < ONE_MONTH) {
             return timeAgoWeeks(timeDifference / ONE_WEEK);
-        } else {
+        } else if (timeDifference < ONE_YEAR) {
             return timeAgoMonths(timeDifference / ONE_MONTH);
+        } else {
+            return timeAgoYears(timeDifference / ONE_YEAR);
         }
     }
 
@@ -90,6 +93,14 @@ public class FuzzyDateFormatter {
             return fuzzyMessages.oneMonthAgo();
         } else {
             return fuzzyMessages.someMonthssAgo(numberOfMonths);
+        }
+    }
+
+    private String timeAgoYears(long numberOfYears) {
+        if (numberOfYears == 1) {
+            return fuzzyMessages.oneYearAgo();
+        } else {
+            return fuzzyMessages.someYearsAgo(numberOfYears);
         }
     }
 }

@@ -30,4 +30,8 @@ public interface FuzzyDateMessages {
 
     public String someMonthssAgo(long numberOfMonths);
 
+    public String oneYearAgo();
+
+    public String someYearsAgo(long numberOfYears);
+
 }
