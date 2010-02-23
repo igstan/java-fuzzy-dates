@@ -37,28 +37,24 @@ public class FuzzyDateFormatter {
             unit = SECONDS;
         } else if (timeDifference < HOURS) {
             unit = MINUTES;
-            timeDifference = timeDifference / MINUTES;
         } else if (timeDifference < DAYS) {
             unit = HOURS;
-            timeDifference = timeDifference / HOURS;
         } else if (timeDifference < WEEKS) {
             unit = DAYS;
-            timeDifference = timeDifference / DAYS;
         } else if (timeDifference < MONTHS) {
             unit = WEEKS;
-            timeDifference = timeDifference / WEEKS;
         } else if (timeDifference < YEARS) {
             unit = MONTHS;
-            timeDifference = timeDifference / MONTHS;
         } else {
             unit = YEARS;
-            timeDifference = timeDifference / YEARS;
         }
 
         return callUnit(unit, timeDifference);
     }
 
     private String callUnit(int unit, int difference) {
+        difference = difference / unit;
+        
         if (difference == 1) {
             return callSingleUnit(unit);
         } else {
