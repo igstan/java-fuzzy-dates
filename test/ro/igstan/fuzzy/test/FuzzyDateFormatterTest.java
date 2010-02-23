@@ -42,15 +42,6 @@ public class FuzzyDateFormatterTest {
     }
 
     @Test
-    public void acum3Secunde() {
-        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
-        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 47);
-
-        FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
-        assertEquals("acum 3 secunde", fuzzyFormatter.timeAgo(before));
-    }
-
-    @Test
     public void acum1Minut() {
         Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
         Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 49, 50);
@@ -66,15 +57,6 @@ public class FuzzyDateFormatterTest {
 
         FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
         assertEquals("acum 2 minute", fuzzyFormatter.timeAgo(before));
-    }
-
-    @Test
-    public void acum3Minute() {
-        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
-        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 47, 50);
-
-        FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
-        assertEquals("acum 3 minute", fuzzyFormatter.timeAgo(before));
     }
 
     @Test
