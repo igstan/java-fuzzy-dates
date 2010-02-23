@@ -26,7 +26,17 @@ public class FuzzyDateFormatter {
         if (diff == 1) {
             return fuzzyMessages.oneSecondAgo();
         } else {
-            return fuzzyMessages.someSecondsAgo(diff);
+            if (diff < 60) {
+                return fuzzyMessages.someSecondsAgo(diff);
+            } else {
+                diff = diff / 60;
+
+                if (diff == 1) {
+                    return fuzzyMessages.oneMinuteAgo();
+                } else {
+                    return fuzzyMessages.someMinutesAgo(diff);
+                }
+            }
         }
     }
 }
