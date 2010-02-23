@@ -77,6 +77,24 @@ public class FuzzyDateFormatterTest {
         assertEquals("acum 2 ore", fuzzyFormatter.timeAgo(before));
     }
 
+    @Test
+    public void acum1Zi() {
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 21, 16, 50, 50);
+
+        FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
+        assertEquals("acum 1 zi", fuzzyFormatter.timeAgo(before));
+    }
+
+    @Test
+    public void acum2Zile() {
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 20, 16, 50, 50);
+
+        FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
+        assertEquals("acum 2 zile", fuzzyFormatter.timeAgo(before));
+    }
+
     private Calendar makeCalendar(int year, int month, int day, int hour, int minute, int second) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day, hour, minute, second);

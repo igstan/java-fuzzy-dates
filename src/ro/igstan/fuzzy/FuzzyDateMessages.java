@@ -18,4 +18,8 @@ public interface FuzzyDateMessages {
 
     public String someHoursAgo(long numberOfHours);
 
+    public String oneDayAgo();
+
+    public String someDaysAgo(long numberOfDays);
+
 }
