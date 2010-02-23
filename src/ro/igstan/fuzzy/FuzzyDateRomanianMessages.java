@@ -50,7 +50,7 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
         return "acum 1 lună";
     }
 
-    public String someMonthssAgo(long numberOfMonths) {
+    public String someMonthsAgo(long numberOfMonths) {
         return "acum 2 luni";
     }
 

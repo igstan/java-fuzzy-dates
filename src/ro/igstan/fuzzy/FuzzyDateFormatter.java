@@ -92,7 +92,7 @@ public class FuzzyDateFormatter {
         if (numberOfMonths == 1) {
             return fuzzyMessages.oneMonthAgo();
         } else {
-            return fuzzyMessages.someMonthssAgo(numberOfMonths);
+            return fuzzyMessages.someMonthsAgo(numberOfMonths);
         }
     }
 

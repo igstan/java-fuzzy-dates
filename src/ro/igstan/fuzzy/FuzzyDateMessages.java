@@ -28,7 +28,7 @@ public interface FuzzyDateMessages {
 
     public String oneMonthAgo();
 
-    public String someMonthssAgo(long numberOfMonths);
+    public String someMonthsAgo(long numberOfMonths);
 
     public String oneYearAgo();
 
