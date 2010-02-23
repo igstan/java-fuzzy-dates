@@ -21,22 +21,30 @@ public class FuzzyDateFormatter {
     public String timeAgo(Calendar before) {
         long beforeSeconds = before.getTimeInMillis() / 1000;
         long nowSeconds = currentTime.getTimeInMillis() / 1000;
-        long diff = nowSeconds - beforeSeconds;
+        long numberOfSeconds = nowSeconds - beforeSeconds;
 
-        if (diff == 1) {
+        if (numberOfSeconds < 60) {
+            return timeAgoSeconds(numberOfSeconds);
+        } else {
+            return timeAgoMinutes(numberOfSeconds);
+        }
+    }
+
+    private String timeAgoSeconds(long numberOfSeconds) {
+        if (numberOfSeconds == 1) {
             return fuzzyMessages.oneSecondAgo();
         } else {
-            if (diff < 60) {
-                return fuzzyMessages.someSecondsAgo(diff);
-            } else {
-                diff = diff / 60;
+            return fuzzyMessages.someSecondsAgo(numberOfSeconds);
+        }
+    }
 
-                if (diff == 1) {
-                    return fuzzyMessages.oneMinuteAgo();
-                } else {
-                    return fuzzyMessages.someMinutesAgo(diff);
-                }
-            }
+    private String timeAgoMinutes(long numberOfSeconds) {
+        long numberOfMinutes = numberOfSeconds / 60;
+
+        if (numberOfMinutes == 1) {
+            return fuzzyMessages.oneMinuteAgo();
+        } else {
+            return fuzzyMessages.someMinutesAgo(numberOfMinutes);
         }
     }
 }
