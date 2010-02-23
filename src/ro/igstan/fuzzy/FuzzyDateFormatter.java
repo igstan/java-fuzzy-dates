@@ -31,49 +31,31 @@ public class FuzzyDateFormatter {
         int nowSeconds = (int) (currentTime.getTimeInMillis() / 1000);
         int timeDifference = nowSeconds - beforeSeconds;
 
+        int unit;
+
         if (timeDifference < MINUTES) {
-            return timeAgoSeconds(timeDifference);
+            unit = SECONDS;
         } else if (timeDifference < HOURS) {
-            return timeAgoMinutes(timeDifference / MINUTES);
+            unit = MINUTES;
+            timeDifference = timeDifference / MINUTES;
         } else if (timeDifference < DAYS) {
-            return timeAgoHours(timeDifference / HOURS);
+            unit = HOURS;
+            timeDifference = timeDifference / HOURS;
         } else if (timeDifference < WEEKS) {
-            return timeAgoDays(timeDifference / DAYS);
+            unit = DAYS;
+            timeDifference = timeDifference / DAYS;
         } else if (timeDifference < MONTHS) {
-            return timeAgoWeeks(timeDifference / WEEKS);
+            unit = WEEKS;
+            timeDifference = timeDifference / WEEKS;
         } else if (timeDifference < YEARS) {
-            return timeAgoMonths(timeDifference / MONTHS);
+            unit = MONTHS;
+            timeDifference = timeDifference / MONTHS;
         } else {
-            return timeAgoYears(timeDifference / YEARS);
+            unit = YEARS;
+            timeDifference = timeDifference / YEARS;
         }
-    }
 
-    private String timeAgoSeconds(int numberOfSeconds) {
-        return callUnit(SECONDS, numberOfSeconds);
-    }
-
-    private String timeAgoMinutes(int numberOfMinutes) {
-        return callUnit(MINUTES, numberOfMinutes);
-    }
-
-    private String timeAgoHours(int numberOfHours) {
-        return callUnit(HOURS, numberOfHours);
-    }
-
-    private String timeAgoDays(int numberOfDays) {
-        return callUnit(DAYS, numberOfDays);
-    }
-
-    private String timeAgoWeeks(int numberOfWeeks) {
-        return callUnit(WEEKS, numberOfWeeks);
-    }
-
-    private String timeAgoMonths(int numberOfMonths) {
-        return callUnit(MONTHS, numberOfMonths);
-    }
-
-    private String timeAgoYears(int numberOfYears) {
-        return callUnit(YEARS, numberOfYears);
+        return callUnit(unit, timeDifference);
     }
 
     private String callUnit(int unit, int difference) {
