@@ -8,21 +8,13 @@ import java.util.Calendar;
 
 public class FuzzyDateFormatter {
 
-    private static final int SECONDS    = 1;
-    private static final int ONE_MINUTE = 60 * SECONDS;
-    private static final int ONE_HOUR   = 60 * ONE_MINUTE;
-    private static final int ONE_DAY    = 24 * ONE_HOUR;
-    private static final int ONE_WEEK   =  7 * ONE_DAY;
-    private static final int ONE_MONTH  =  4 * ONE_WEEK;
-    private static final int ONE_YEAR   = 12 * ONE_MONTH;
-
-    private final static int UNIT_SECONDS = 1;
-    private final static int UNIT_MINUTES = 2;
-    private final static int UNIT_HOURS   = 3;
-    private final static int UNIT_DAYS    = 4;
-    private final static int UNIT_WEEKS   = 5;
-    private final static int UNIT_MONTHS  = 6;
-    private final static int UNIT_YEARS   = 7;
+    private final static int SECONDS = 1;
+    private final static int MINUTES = 60 * SECONDS;
+    private final static int HOURS   = 60 * MINUTES;
+    private final static int DAYS    = 24 * HOURS;
+    private final static int WEEKS   =  7 * DAYS;
+    private final static int MONTHS  =  4 * WEEKS;
+    private final static int YEARS   = 12 * MONTHS;
 
     private final Calendar currentTime;
 
@@ -39,21 +31,49 @@ public class FuzzyDateFormatter {
         int nowSeconds = (int) (currentTime.getTimeInMillis() / 1000);
         int timeDifference = nowSeconds - beforeSeconds;
 
-        if (timeDifference < ONE_MINUTE) {
+        if (timeDifference < MINUTES) {
             return timeAgoSeconds(timeDifference);
-        } else if (timeDifference < ONE_HOUR) {
-            return timeAgoMinutes(timeDifference / ONE_MINUTE);
-        } else if (timeDifference < ONE_DAY) {
-            return timeAgoHours(timeDifference / ONE_HOUR);
-        } else if (timeDifference < ONE_WEEK) {
-            return timeAgoDays(timeDifference / ONE_DAY);
-        } else if (timeDifference < ONE_MONTH) {
-            return timeAgoWeeks(timeDifference / ONE_WEEK);
-        } else if (timeDifference < ONE_YEAR) {
-            return timeAgoMonths(timeDifference / ONE_MONTH);
+        } else if (timeDifference < HOURS) {
+            return timeAgoMinutes(timeDifference / MINUTES);
+        } else if (timeDifference < DAYS) {
+            return timeAgoHours(timeDifference / HOURS);
+        } else if (timeDifference < WEEKS) {
+            return timeAgoDays(timeDifference / DAYS);
+        } else if (timeDifference < MONTHS) {
+            return timeAgoWeeks(timeDifference / WEEKS);
+        } else if (timeDifference < YEARS) {
+            return timeAgoMonths(timeDifference / MONTHS);
         } else {
-            return timeAgoYears(timeDifference / ONE_YEAR);
+            return timeAgoYears(timeDifference / YEARS);
         }
+    }
+
+    private String timeAgoSeconds(int numberOfSeconds) {
+        return callUnit(SECONDS, numberOfSeconds);
+    }
+
+    private String timeAgoMinutes(int numberOfMinutes) {
+        return callUnit(MINUTES, numberOfMinutes);
+    }
+
+    private String timeAgoHours(int numberOfHours) {
+        return callUnit(HOURS, numberOfHours);
+    }
+
+    private String timeAgoDays(int numberOfDays) {
+        return callUnit(DAYS, numberOfDays);
+    }
+
+    private String timeAgoWeeks(int numberOfWeeks) {
+        return callUnit(WEEKS, numberOfWeeks);
+    }
+
+    private String timeAgoMonths(int numberOfMonths) {
+        return callUnit(MONTHS, numberOfMonths);
+    }
+
+    private String timeAgoYears(int numberOfYears) {
+        return callUnit(YEARS, numberOfYears);
     }
 
     private String callUnit(int unit, int difference) {
@@ -66,19 +86,19 @@ public class FuzzyDateFormatter {
 
     private String callMultiUnit(int unit, int difference) {
         switch (unit) {
-            case UNIT_SECONDS:
+            case SECONDS:
                 return fuzzyMessages.someSecondsAgo(difference);
-            case UNIT_MINUTES:
+            case MINUTES:
                 return fuzzyMessages.someMinutesAgo(difference);
-            case UNIT_HOURS:
+            case HOURS:
                 return fuzzyMessages.someHoursAgo(difference);
-            case UNIT_DAYS:
+            case DAYS:
                 return fuzzyMessages.someDaysAgo(difference);
-            case UNIT_WEEKS:
+            case WEEKS:
                 return fuzzyMessages.someWeeksAgo(difference);
-            case UNIT_MONTHS:
+            case MONTHS:
                 return fuzzyMessages.someMonthsAgo(difference);
-            case UNIT_YEARS:
+            case YEARS:
                 return fuzzyMessages.someYearsAgo(difference);
             default:
                 return "Unknown multi unit";
@@ -87,50 +107,22 @@ public class FuzzyDateFormatter {
 
     private String callSingleUnit(int unit) {
         switch (unit) {
-            case UNIT_SECONDS:
+            case SECONDS:
                 return fuzzyMessages.oneSecondAgo();
-            case UNIT_MINUTES:
+            case MINUTES:
                 return fuzzyMessages.oneMinuteAgo();
-            case UNIT_HOURS:
+            case HOURS:
                 return fuzzyMessages.oneHourAgo();
-            case UNIT_DAYS:
+            case DAYS:
                 return fuzzyMessages.oneDayAgo();
-            case UNIT_WEEKS:
+            case WEEKS:
                 return fuzzyMessages.oneWeekAgo();
-            case UNIT_MONTHS:
+            case MONTHS:
                 return fuzzyMessages.oneMonthAgo();
-            case UNIT_YEARS:
+            case YEARS:
                 return fuzzyMessages.oneYearAgo();
             default:
                 return "Unknown single unit";
         }
-    }
-
-    private String timeAgoSeconds(int numberOfSeconds) {
-        return callUnit(UNIT_SECONDS, numberOfSeconds);
-    }
-
-    private String timeAgoMinutes(int numberOfMinutes) {
-        return callUnit(UNIT_MINUTES, numberOfMinutes);
-    }
-
-    private String timeAgoHours(int numberOfHours) {
-        return callUnit(UNIT_HOURS, numberOfHours);
-    }
-
-    private String timeAgoDays(int numberOfDays) {
-        return callUnit(UNIT_DAYS, numberOfDays);
-    }
-
-    private String timeAgoWeeks(int numberOfWeeks) {
-        return callUnit(UNIT_WEEKS, numberOfWeeks);
-    }
-
-    private String timeAgoMonths(int numberOfMonths) {
-        return callUnit(UNIT_MONTHS, numberOfMonths);
-    }
-
-    private String timeAgoYears(int numberOfYears) {
-        return callUnit(UNIT_YEARS, numberOfYears);
     }
 }
