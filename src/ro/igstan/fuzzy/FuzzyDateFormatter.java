@@ -101,7 +101,7 @@ public class FuzzyDateFormatter {
             case YEARS:
                 return fuzzyMessages.someYearsAgo(difference);
             default:
-                return "Unknown multi unit";
+                throw new RuntimeException("Unknown multi unit");
         }
     }
 
@@ -122,7 +122,7 @@ public class FuzzyDateFormatter {
             case YEARS:
                 return fuzzyMessages.oneYearAgo();
             default:
-                return "Unknown single unit";
+                throw new RuntimeException("Unknown single unit");
         }
     }
 }
