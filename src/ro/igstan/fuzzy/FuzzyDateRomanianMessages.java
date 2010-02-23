@@ -37,4 +37,20 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
     public String someDaysAgo(long numberOfDays) {
         return "acum " + numberOfDays + " zile";
     }
+
+    public String oneWeekAgo() {
+        return "acum 1 săptămână";
+    }
+
+    public String someWeeksAgo(long numberOfWeeks) {
+        return "acum " + numberOfWeeks + " săptămâni";
+    }
+
+    public String oneMonthAgo() {
+        return "acum 1 lună";
+    }
+
+    public String someMonthssAgo(long numberOfMonths) {
+        return "acum 2 luni";
+    }
 }

@@ -22,4 +22,12 @@ public interface FuzzyDateMessages {
 
     public String someDaysAgo(long numberOfDays);
 
+    public String oneWeekAgo();
+
+    public String someWeeksAgo(long numberOfWeeks);
+
+    public String oneMonthAgo();
+
+    public String someMonthssAgo(long numberOfMonths);
+
 }

@@ -95,6 +95,42 @@ public class FuzzyDateFormatterTest {
         assertEquals("acum 2 zile", fuzzyFormatter.timeAgo(before));
     }
 
+    @Test
+    public void acum1Săptămână() {
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 15, 16, 50, 50);
+
+        FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
+        assertEquals("acum 1 săptămână", fuzzyFormatter.timeAgo(before));
+    }
+
+    @Test
+    public void acum2Săptămâni() {
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 8, 16, 50, 50);
+
+        FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
+        assertEquals("acum 2 săptămâni", fuzzyFormatter.timeAgo(before));
+    }
+
+    @Test
+    public void acum1Lună() {
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.JANUARY, 22, 16, 50, 50);
+
+        FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
+        assertEquals("acum 1 lună", fuzzyFormatter.timeAgo(before));
+    }
+
+    @Test
+    public void acum2Luni() {
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2009, Calendar.DECEMBER, 22, 16, 50, 50);
+
+        FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
+        assertEquals("acum 2 luni", fuzzyFormatter.timeAgo(before));
+    }
+
     private Calendar makeCalendar(int year, int month, int day, int hour, int minute, int second) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day, hour, minute, second);
