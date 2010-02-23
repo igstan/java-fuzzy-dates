@@ -16,6 +16,14 @@ public class FuzzyDateFormatter {
     private static final int ONE_MONTH  =  4 * ONE_WEEK;
     private static final int ONE_YEAR   = 12 * ONE_MONTH;
 
+    private final static int UNIT_SECONDS = 1;
+    private final static int UNIT_MINUTES = 2;
+    private final static int UNIT_HOURS   = 3;
+    private final static int UNIT_DAYS    = 4;
+    private final static int UNIT_WEEKS   = 5;
+    private final static int UNIT_MONTHS  = 6;
+    private final static int UNIT_YEARS   = 7;
+
     private final Calendar currentTime;
 
     private final FuzzyDateMessages fuzzyMessages;
@@ -48,59 +56,81 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoSeconds(int numberOfSeconds) {
-        if (numberOfSeconds == 1) {
-            return fuzzyMessages.oneSecondAgo();
+    private String callUnit(int unit, int difference) {
+        if (difference == 1) {
+            return callSingleUnit(unit);
         } else {
-            return fuzzyMessages.someSecondsAgo(numberOfSeconds);
+            return callMultiUnit(unit, difference);
         }
+    }
+
+    private String callMultiUnit(int unit, int difference) {
+        switch (unit) {
+            case UNIT_SECONDS:
+                return fuzzyMessages.someSecondsAgo(difference);
+            case UNIT_MINUTES:
+                return fuzzyMessages.someMinutesAgo(difference);
+            case UNIT_HOURS:
+                return fuzzyMessages.someHoursAgo(difference);
+            case UNIT_DAYS:
+                return fuzzyMessages.someDaysAgo(difference);
+            case UNIT_WEEKS:
+                return fuzzyMessages.someWeeksAgo(difference);
+            case UNIT_MONTHS:
+                return fuzzyMessages.someMonthsAgo(difference);
+            case UNIT_YEARS:
+                return fuzzyMessages.someYearsAgo(difference);
+            default:
+                return "Unknown multi unit";
+        }
+    }
+
+    private String callSingleUnit(int unit) {
+        switch (unit) {
+            case UNIT_SECONDS:
+                return fuzzyMessages.oneSecondAgo();
+            case UNIT_MINUTES:
+                return fuzzyMessages.oneMinuteAgo();
+            case UNIT_HOURS:
+                return fuzzyMessages.oneHourAgo();
+            case UNIT_DAYS:
+                return fuzzyMessages.oneDayAgo();
+            case UNIT_WEEKS:
+                return fuzzyMessages.oneWeekAgo();
+            case UNIT_MONTHS:
+                return fuzzyMessages.oneMonthAgo();
+            case UNIT_YEARS:
+                return fuzzyMessages.oneYearAgo();
+            default:
+                return "Unknown single unit";
+        }
+    }
+
+    private String timeAgoSeconds(int numberOfSeconds) {
+        return callUnit(UNIT_SECONDS, numberOfSeconds);
     }
 
     private String timeAgoMinutes(int numberOfMinutes) {
-        if (numberOfMinutes == 1) {
-            return fuzzyMessages.oneMinuteAgo();
-        } else {
-            return fuzzyMessages.someMinutesAgo(numberOfMinutes);
-        }
+        return callUnit(UNIT_MINUTES, numberOfMinutes);
     }
 
     private String timeAgoHours(int numberOfHours) {
-        if (numberOfHours == 1) {
-            return fuzzyMessages.oneHourAgo();
-        } else {
-            return fuzzyMessages.someHoursAgo(numberOfHours);
-        }
+        return callUnit(UNIT_HOURS, numberOfHours);
     }
 
     private String timeAgoDays(int numberOfDays) {
-        if (numberOfDays == 1) {
-            return fuzzyMessages.oneDayAgo();
-        } else {
-            return fuzzyMessages.someDaysAgo(numberOfDays);
-        }
+        return callUnit(UNIT_DAYS, numberOfDays);
     }
 
     private String timeAgoWeeks(int numberOfWeeks) {
-        if (numberOfWeeks == 1) {
-            return fuzzyMessages.oneWeekAgo();
-        } else {
-            return fuzzyMessages.someWeeksAgo(numberOfWeeks);
-        }
+        return callUnit(UNIT_WEEKS, numberOfWeeks);
     }
 
     private String timeAgoMonths(int numberOfMonths) {
-        if (numberOfMonths == 1) {
-            return fuzzyMessages.oneMonthAgo();
-        } else {
-            return fuzzyMessages.someMonthsAgo(numberOfMonths);
-        }
+        return callUnit(UNIT_MONTHS, numberOfMonths);
     }
 
     private String timeAgoYears(int numberOfYears) {
-        if (numberOfYears == 1) {
-            return fuzzyMessages.oneYearAgo();
-        } else {
-            return fuzzyMessages.someYearsAgo(numberOfYears);
-        }
+        return callUnit(UNIT_YEARS, numberOfYears);
     }
 }
