@@ -31,11 +31,11 @@ public class FuzzyDateFormatter {
         if (timeDifference < ONE_MINUTE) {
             return timeAgoSeconds(timeDifference);
         } else if (timeDifference < ONE_HOUR) {
-            return timeAgoMinutes(timeDifference);
+            return timeAgoMinutes(timeDifference / ONE_MINUTE);
         } else if (timeDifference < ONE_DAY) {
-            return timeAgoHours(timeDifference);
+            return timeAgoHours(timeDifference / ONE_HOUR);
         } else {
-            return timeAgoDays(timeDifference);
+            return timeAgoDays(timeDifference / ONE_DAY);
         }
     }
 
@@ -47,9 +47,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoMinutes(long numberOfSeconds) {
-        long numberOfMinutes = numberOfSeconds / 60;
-
+    private String timeAgoMinutes(long numberOfMinutes) {
         if (numberOfMinutes == 1) {
             return fuzzyMessages.oneMinuteAgo();
         } else {
@@ -57,9 +55,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoHours(long numberOfSeconds) {
-        long numberOfHours = numberOfSeconds / 3600;
-
+    private String timeAgoHours(long numberOfHours) {
         if (numberOfHours == 1) {
             return fuzzyMessages.oneHourAgo();
         } else {
@@ -67,9 +63,7 @@ public class FuzzyDateFormatter {
         }
     }
 
-    private String timeAgoDays(long numberOfSeconds) {
-        long numberOfDays = numberOfSeconds / 3600 / 24;
-
+    private String timeAgoDays(long numberOfDays) {
         if (numberOfDays == 1) {
             return fuzzyMessages.oneDayAgo();
         } else {
