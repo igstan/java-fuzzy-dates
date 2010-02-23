@@ -25,8 +25,10 @@ public class FuzzyDateFormatter {
 
         if (numberOfSeconds < 60) {
             return timeAgoSeconds(numberOfSeconds);
-        } else {
+        } else if (numberOfSeconds < 3600) {
             return timeAgoMinutes(numberOfSeconds);
+        } else {
+            return timeAgoHours(numberOfSeconds);
         }
     }
 
@@ -45,6 +47,16 @@ public class FuzzyDateFormatter {
             return fuzzyMessages.oneMinuteAgo();
         } else {
             return fuzzyMessages.someMinutesAgo(numberOfMinutes);
+        }
+    }
+
+    private String timeAgoHours(long numberOfSeconds) {
+        long numberOfHours = numberOfSeconds / 3600;
+
+        if (numberOfHours == 1) {
+            return fuzzyMessages.oneHourAgo();
+        } else {
+            return fuzzyMessages.someHoursAgo(numberOfHours);
         }
     }
 }

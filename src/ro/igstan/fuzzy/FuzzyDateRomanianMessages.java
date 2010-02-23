@@ -21,4 +21,12 @@ public class FuzzyDateRomanianMessages implements FuzzyDateMessages {
     public String someMinutesAgo(long diff) {
         return "acum " + diff + " minute";
     }
+
+    public String oneHourAgo() {
+        return "acum 1 oră";
+    }
+
+    public String someHoursAgo(long numberOfHours) {
+        return "acum " + numberOfHours + " ore";
+    }
 }
