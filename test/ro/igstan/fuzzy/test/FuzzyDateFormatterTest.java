@@ -2,6 +2,7 @@ package ro.igstan.fuzzy.test;
 
 import java.util.Calendar;
 
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,10 +16,15 @@ import ro.igstan.fuzzy.FuzzyDateRomanianMessages;
 
 public class FuzzyDateFormatterTest {
 
+    private FuzzyDateRomanianMessages fuzzyMessages;
+
+    @Before
+    public void setUp() {
+        fuzzyMessages = new FuzzyDateRomanianMessages();
+    }
+
     @Test
     public void acum1Secundă() {
-        FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
-
         Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
         Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 49);
 
@@ -28,8 +34,6 @@ public class FuzzyDateFormatterTest {
 
     @Test
     public void acum2Secunde() {
-        FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
-
         Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
         Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 48);
 
@@ -39,8 +43,6 @@ public class FuzzyDateFormatterTest {
 
     @Test
     public void acum3Secunde() {
-        FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
-
         Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
         Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 47);
 
@@ -50,8 +52,6 @@ public class FuzzyDateFormatterTest {
 
     @Test
     public void acum1Minut() {
-        FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
-
         Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
         Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 49, 50);
 
@@ -61,8 +61,6 @@ public class FuzzyDateFormatterTest {
 
     @Test
     public void acum2Minute() {
-        FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
-
         Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
         Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 48, 50);
 
@@ -72,8 +70,6 @@ public class FuzzyDateFormatterTest {
 
     @Test
     public void acum3Minute() {
-        FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
-
         Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
         Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 47, 50);
 
