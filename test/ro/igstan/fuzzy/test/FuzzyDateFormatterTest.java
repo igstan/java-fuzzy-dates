@@ -19,11 +19,8 @@ public class FuzzyDateFormatterTest {
     public void acum1Secundă() {
         FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
 
-        Calendar now = Calendar.getInstance();
-        now.set(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
-
-        Calendar before = Calendar.getInstance();
-        before.set(2010, Calendar.FEBRUARY, 22, 16, 50, 49);
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 49);
 
         FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
         assertEquals("acum 1 secundă", fuzzyFormatter.timeAgo(before));
@@ -33,11 +30,8 @@ public class FuzzyDateFormatterTest {
     public void acum2Secunde() {
         FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
 
-        Calendar now = Calendar.getInstance();
-        now.set(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
-
-        Calendar before = Calendar.getInstance();
-        before.set(2010, Calendar.FEBRUARY, 22, 16, 50, 48);
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 48);
 
         FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
         assertEquals("acum 2 secunde", fuzzyFormatter.timeAgo(before));
@@ -47,11 +41,8 @@ public class FuzzyDateFormatterTest {
     public void acum3Secunde() {
         FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
 
-        Calendar now = Calendar.getInstance();
-        now.set(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
-
-        Calendar before = Calendar.getInstance();
-        before.set(2010, Calendar.FEBRUARY, 22, 16, 50, 47);
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 47);
 
         FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
         assertEquals("acum 3 secunde", fuzzyFormatter.timeAgo(before));
@@ -61,11 +52,8 @@ public class FuzzyDateFormatterTest {
     public void acum1Minut() {
         FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
 
-        Calendar now = Calendar.getInstance();
-        now.set(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
-
-        Calendar before = Calendar.getInstance();
-        before.set(2010, Calendar.FEBRUARY, 22, 16, 49, 50);
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 49, 50);
 
         FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
         assertEquals("acum 1 minut", fuzzyFormatter.timeAgo(before));
@@ -75,11 +63,8 @@ public class FuzzyDateFormatterTest {
     public void acum2Minute() {
         FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
 
-        Calendar now = Calendar.getInstance();
-        now.set(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
-
-        Calendar before = Calendar.getInstance();
-        before.set(2010, Calendar.FEBRUARY, 22, 16, 48, 50);
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 48, 50);
 
         FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
         assertEquals("acum 2 minute", fuzzyFormatter.timeAgo(before));
@@ -89,13 +74,16 @@ public class FuzzyDateFormatterTest {
     public void acum3Minute() {
         FuzzyDateMessages fuzzyMessages = new FuzzyDateRomanianMessages();
 
-        Calendar now = Calendar.getInstance();
-        now.set(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
-
-        Calendar before = Calendar.getInstance();
-        before.set(2010, Calendar.FEBRUARY, 22, 16, 47, 50);
+        Calendar now = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 50, 50);
+        Calendar before = makeCalendar(2010, Calendar.FEBRUARY, 22, 16, 47, 50);
 
         FuzzyDateFormatter fuzzyFormatter = new FuzzyDateFormatter(now, fuzzyMessages);
         assertEquals("acum 3 minute", fuzzyFormatter.timeAgo(before));
+    }
+
+    private Calendar makeCalendar(int year, int month, int day, int hour, int minute, int second) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day, hour, minute, second);
+        return calendar;
     }
 }
