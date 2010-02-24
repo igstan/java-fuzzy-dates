@@ -1,0 +1,33 @@
+acum o secundă
+acum 1 secundă
+acum 2 secunde
+acum douăzeci de secunde
+
+acum 1 minut
+acum 2 minute
+
+acum 1 oră
+acum 2 ore
+acum o oră jumătate
+acum 1 oră și 27 minute
+
+acum 1 zi
+ieri
+ziua trecută
+acum 2 zile
+alaltăieri
+
+acum o săptămână
+acum 1 săptămână
+acum 2 săptămâni
+
+luna trecută
+acum o lună
+acum 1 lună, 2 săptămâni și 3 zile
+acum 2 luni
+
+anul trecut
+acum un an
+acum 1 an, 2 luni și 3 săptămâni
+acum 2 ani
+
